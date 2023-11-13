@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               IconButton(
                                   onPressed: () => _showFilter(context),
-                                  icon: Icon(Icons.filter_alt_sharp))
+                                  icon: Icon(Icons.filter_alt_sharp)),
                             ],
                           ),
                         ),
@@ -95,24 +95,45 @@ Future _showFilter(context) {
   return showModalBottomSheet(
       context: context,
       builder: (context) {
-        return Column(
-          children: [
-            _buildSlider(context),
-            const Text('Rating'),
-            _buildRating(),
-            const Text('Hotel Class'),
-            _buildHotelClass(),
-            const Text('Distance From'),
-            const Divider(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Location'),
-                DropdownButton(items: [], onChanged: null),
-              ],
-            ),
-            Divider(),
-          ],
+        return SizedBox(
+          height: 400.w,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildSlider(context),
+              Text(
+                'Rating',
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              _buildRating(),
+              Text(
+                'Hotel Class',
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              _buildHotelClass(),
+              Text(
+                'Distance From',
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              const Divider(
+                color: AppColors.grey,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Location',
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                  DropdownButton(items: [], onChanged: null),
+                ],
+              ),
+              const Divider(
+                color: AppColors.grey,
+              ),
+            ],
+          ),
         );
       });
 }
@@ -120,7 +141,7 @@ Future _showFilter(context) {
 Widget _buildSlider(BuildContext context) {
   return Column(
     children: [
-      CustomSlider(),
+      const CustomSlider(),
       Row(
         children: [
           const SizedBox(width: 20),
